@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Flask App that integrates with AirBnB static v4
+Flask App that integrates with AirBnB static
 """
 from flask import Flask, render_template, url_for
 from models import storage
@@ -20,7 +20,7 @@ def teardown_db(exception):
     storage.close()
 
 
-@app.route('/2-hbnb')
+@app.route('/4-hbnb')
 def hbnb_filters(the_id=None):
     """
     handles custom template with states, cities & amentities
@@ -31,7 +31,7 @@ def hbnb_filters(the_id=None):
     places = storage.all('Place').values()
     users = dict([user.id, "{} {}".format(user.first_name, user.last_name)]
                  for user in storage.all('User').values())
-    return render_template('2-hbnb.html',
+    return render_template('4-hbnb.html',
                            cache_id=uuid.uuid4(),
                            states=states,
                            amens=amens,
